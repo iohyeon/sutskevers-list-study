@@ -1,0 +1,57 @@
+환경: Python 3.14.7, NumPy 2.5.3, PyTorch 2.14.0, macOS arm64, CPU
+실행일: 2026-09-28
+말뭉치: make_corpus.py (seed 7), 23,546글자, 어휘 28글자, 학습 18,836 / 검증 2,355 / 시험 2,355글자
+명령: python3 overfit.py
+설정: DropLSTM(layer 2, dropout 없음), hidden (96, 192, 384), epoch 50, 조각 길이 50, 배치 20, Adam lr 3e-3, torch.manual_seed(0), perplexity 는 dropout 을 끈 상태로 split 전체를 훑어 계산
+소요: 215초
+
+말뭉치의 태그 쌍 400개. 여는 태그와 닫는 태그 사이의 거리 최소 14, 평균 32.3, 최대 52글자
+조각 길이 50 이므로 평균 거리는 한 조각 안에 들어간다.
+
+=== hidden 96, layer 2, dropout 없음 ===
+  epoch   1 train PP  11.050 valid PP  11.023 gap  -0.026 1s
+  epoch   3 train PP   2.195 valid PP   2.200 gap  +0.005 3s
+  epoch   5 train PP   1.789 valid PP   1.799 gap  +0.010 5s
+  epoch  10 train PP   1.719 valid PP   1.742 gap  +0.022 10s
+  epoch  15 train PP   1.696 valid PP   1.740 gap  +0.044 15s
+  epoch  20 train PP   1.676 valid PP   1.741 gap  +0.064 20s
+  epoch  30 train PP   1.635 valid PP   1.774 gap  +0.140 30s
+  epoch  40 train PP   1.560 valid PP   1.869 gap  +0.308 39s
+  epoch  50 train PP   1.494 valid PP   1.982 gap  +0.488 48s
+  파라미터 153,628, 학습 글자당 8.2개
+  검증 perplexity 가 가장 낮았던 곳: epoch 11, train 1.712 valid 1.738
+  마지막 epoch: train 1.494 valid 1.982 test 1.979, 48초
+
+=== hidden 192, layer 2, dropout 없음 ===
+  epoch   1 train PP   4.420 valid PP   4.422 gap  +0.002 1s
+  epoch   3 train PP   1.758 valid PP   1.762 gap  +0.004 4s
+  epoch   5 train PP   1.732 valid PP   1.744 gap  +0.012 6s
+  epoch  10 train PP   1.701 valid PP   1.745 gap  +0.045 12s
+  epoch  15 train PP   1.671 valid PP   1.749 gap  +0.078 18s
+  epoch  20 train PP   1.641 valid PP   1.787 gap  +0.146 24s
+  epoch  30 train PP   1.508 valid PP   1.921 gap  +0.413 36s
+  epoch  40 train PP   1.346 valid PP   2.192 gap  +0.846 48s
+  epoch  50 train PP   1.232 valid PP   2.538 gap  +1.306 60s
+  파라미터 602,140, 학습 글자당 32.0개
+  검증 perplexity 가 가장 낮았던 곳: epoch 6, train 1.713 valid 1.732
+  마지막 epoch: train 1.232 valid 2.538 test 2.548, 60초
+
+=== hidden 384, layer 2, dropout 없음 ===
+  epoch   1 train PP   2.016 valid PP   2.009 gap  -0.007 2s
+  epoch   3 train PP   1.736 valid PP   1.748 gap  +0.012 5s
+  epoch   5 train PP   1.724 valid PP   1.750 gap  +0.026 9s
+  epoch  10 train PP   1.682 valid PP   1.740 gap  +0.058 20s
+  epoch  15 train PP   1.651 valid PP   1.769 gap  +0.118 30s
+  epoch  20 train PP   1.568 valid PP   1.797 gap  +0.230 42s
+  epoch  30 train PP   1.322 valid PP   2.039 gap  +0.717 63s
+  epoch  40 train PP   1.191 valid PP   2.457 gap  +1.266 85s
+  epoch  50 train PP   1.154 valid PP   2.664 gap  +1.510 107s
+  파라미터 2,383,900, 학습 글자당 126.6개
+  검증 perplexity 가 가장 낮았던 곳: epoch 6, train 1.705 valid 1.731
+  마지막 epoch: train 1.154 valid 2.664 test 2.699, 107초
+
+=== 정리 표 ===
+hidden | 파라미터 | 글자당 | 최저 valid (epoch) | 50 epoch train | 50 epoch valid | 차이
+    96 |  153,628 |    8.2 |  1.738 (11) |          1.494 |          1.982 | +0.488
+   192 |  602,140 |   32.0 |  1.732 ( 6) |          1.232 |          2.538 | +1.306
+   384 | 2,383,900 |  126.6 |  1.731 ( 6) |          1.154 |          2.664 | +1.510

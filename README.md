@@ -19,6 +19,9 @@ AlexNet, ResNet, RNN, LSTM을 원 논문의 수식, 숫자를 넣은 손계산, 
 | Bottleneck | 파라미터 수 비교 | 256채널 기준으로 bottleneck 블록과 3×3 conv 두 장을 계산 | [69,632개 대 1,179,648개](02-resnet/06-bottleneck.md) |
 | RNN | BPTT 구현 검증 | 직접 유도한 기울기와 수치 미분을 비교 | [상대 오차 최대 8.1 × 10⁻⁹](03-rnn-lstm/05-bptt.md) |
 | RNN과 LSTM | 먼 거리의 짝 맞추기 | 같은 합성 말뭉치로 n-gram, vanilla RNN, LSTM을 학습 | [51%, 46%, 100%](03-rnn-lstm/08-long-term-dependency.md) |
+| CTC | 정렬 라벨 없이 계산하는 확률 | forward 점화식을 NumPy로 구현하고 프레임 6개에서 모든 정렬을 완전 탐색해 비교 | [DP와 완전 탐색이 정확히 일치](04-dropout-and-ctc/05-ctc-alignment.md). 경로 4,096개 중 84개 |
+| CTC 디코딩 | 언어 모델을 결합한 beam search | greedy와 beam 폭 1에서 500까지의 문자 오류율과 확장 횟수 측정 | [greedy 46.31%, beam 16과 언어 모델 결합 0.36%](04-dropout-and-ctc/06-ctc-decoding.md) |
+| dropout | 마스크를 거는 자리 | 순환 연결과 layer 사이 연결에 각각 걸어 같은 조건으로 학습 | [검증 perplexity 2.227과 1.850](04-dropout-and-ctc/02-where-to-apply-dropout.md) |
 
 ## Approach
 
@@ -63,6 +66,16 @@ RNN은 왜 멀리 있는 정보를 잊고, LSTM은 그것을 어떻게 고쳤는
 글자 단위 language model, n-gram, BPTT, 기울기 소실과 폭발, LSTM cell state, forget gate
 
 → [RNN과 LSTM 문서](03-rnn-lstm/README.md)
+
+### dropout과 CTC
+
+Zaremba, Sutskever, Vinyals. [Recurrent Neural Network Regularization](https://arxiv.org/abs/1409.2329) (2014), Amodei 등. [Deep Speech 2](https://arxiv.org/abs/1512.02595) (2015)
+
+dropout을 순환 연결에 걸면 무엇이 무너지고, 정렬 라벨 없이 음성을 글자로 옮기려면 무엇이 필요한가. 마스크가 곱해지는 횟수를 계산해 dropout의 자리를 비교하고, CTC의 forward 점화식을 구현해 완전 탐색과 맞춘 뒤 beam search 디코딩과 stride, 출력 단위, 배치 정규화의 통계 범위를 쟀습니다.
+
+dropout의 자리, variational dropout, weight drop, CTC, beam search, 언어 모델 결합, stride와 bigram 출력, sequence-wise batch normalization, SortaGrad, 데이터 규모
+
+→ [dropout과 CTC 문서](04-dropout-and-ctc/README.md)
 
 ## Reproducing the experiments
 

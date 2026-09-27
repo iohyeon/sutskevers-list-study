@@ -1,0 +1,86 @@
+환경: Python 3.14.7, NumPy 2.5.3, PyTorch 2.14.0, macOS arm64, CPU
+실행일: 2026-09-28
+말뭉치: make_corpus.py (seed 7), 23,546글자, 어휘 28글자, 학습 18,836 / 검증 2,355 / 시험 2,355글자
+명령: python3 variational_dropout.py
+설정: DropLSTM(hidden 384, layer 2), dropout 비율 0.5, epoch 50, 조각 길이 50, 배치 20, Adam lr 3e-3, torch.manual_seed(0), weight drop 은 배치마다 W_hh 를 다시 뽑는다, 생성 temperature 0.5 seed 0
+소요: 452초
+
+=== per-sequence 마스크는 순환 가중치의 행을 지우는 것과 같다 ===
+H = 6, m = [0, 1, 1, 1, 1, 1], 0 이 된 자리 [0]
+(h ⊙ m) U 와 h (diag(m) U) 의 최대 절대차 0.000e+00
+두 값이 같으므로, h 의 j 번째를 떨어뜨리는 것은 U 의 j 번째 행을 지우는 것이다.
+마스크가 시점마다 바뀌면 지워지는 행이 시점마다 바뀌고, 시퀀스 안에서 고정하면
+그 시퀀스 동안은 행이 지워진 같은 행렬을 쓰는 것이 된다.
+
+=== 비순환 0.5 (기준) ===
+  epoch   1 train PP   2.244 valid PP   2.230 gap  -0.013 2s
+  epoch   5 train PP   1.723 valid PP   1.740 gap  +0.018 9s
+  epoch  10 train PP   1.704 valid PP   1.732 gap  +0.028 18s
+  epoch  20 train PP   1.673 valid PP   1.734 gap  +0.061 36s
+  epoch  30 train PP   1.638 valid PP   1.743 gap  +0.105 54s
+  epoch  40 train PP   1.573 valid PP   1.805 gap  +0.232 72s
+  epoch  50 train PP   1.475 valid PP   1.850 gap  +0.375 91s
+  최저 valid 1.728 (epoch 12)
+  50 epoch: train 1.475 valid 1.850 test 1.861 차이 +0.375
+  생성 3,000글자에서 태그 이름이 맞은 쌍 17/57
+  소요 91초
+
+=== 비순환 0.5 + 순환 per-step 0.5 ===
+  epoch   1 train PP   2.269 valid PP   2.257 gap  -0.012 2s
+  epoch   5 train PP   1.727 valid PP   1.738 gap  +0.011 10s
+  epoch  10 train PP   1.704 valid PP   1.722 gap  +0.018 19s
+  epoch  20 train PP   1.683 valid PP   1.731 gap  +0.048 39s
+  epoch  30 train PP   1.663 valid PP   1.736 gap  +0.073 58s
+  epoch  40 train PP   1.643 valid PP   1.739 gap  +0.096 77s
+  epoch  50 train PP   1.616 valid PP   1.747 gap  +0.132 95s
+  최저 valid 1.722 (epoch 10)
+  50 epoch: train 1.616 valid 1.747 test 1.755 차이 +0.132
+  생성 3,000글자에서 태그 이름이 맞은 쌍 8/50
+  소요 95초
+
+=== 비순환 0.5 + 순환 per-seq 0.5 ===
+  epoch   1 train PP   2.274 valid PP   2.273 gap  -0.001 2s
+  epoch   5 train PP   1.731 valid PP   1.743 gap  +0.013 9s
+  epoch  10 train PP   1.701 valid PP   1.723 gap  +0.022 17s
+  epoch  20 train PP   1.681 valid PP   1.718 gap  +0.036 34s
+  epoch  30 train PP   1.665 valid PP   1.731 gap  +0.066 52s
+  epoch  40 train PP   1.650 valid PP   1.734 gap  +0.084 69s
+  epoch  50 train PP   1.630 valid PP   1.731 gap  +0.101 87s
+  최저 valid 1.717 (epoch 19)
+  50 epoch: train 1.630 valid 1.731 test 1.742 차이 +0.101
+  생성 3,000글자에서 태그 이름이 맞은 쌍 16/55
+  소요 88초
+
+=== 비순환 per-seq 0.5 + 순환 per-seq 0.5 ===
+  epoch   1 train PP   2.683 valid PP   2.684 gap  +0.001 2s
+  epoch   5 train PP   1.736 valid PP   1.744 gap  +0.009 8s
+  epoch  10 train PP   1.708 valid PP   1.726 gap  +0.019 18s
+  epoch  20 train PP   1.686 valid PP   1.720 gap  +0.035 36s
+  epoch  30 train PP   1.672 valid PP   1.726 gap  +0.055 53s
+  epoch  40 train PP   1.651 valid PP   1.723 gap  +0.071 70s
+  epoch  50 train PP   1.625 valid PP   1.708 gap  +0.084 88s
+  최저 valid 1.708 (epoch 50)
+  50 epoch: train 1.625 valid 1.708 test 1.729 차이 +0.084
+  생성 3,000글자에서 태그 이름이 맞은 쌍 25/53
+  소요 88초
+
+=== 비순환 0.5 + W_hh weight drop 0.5 ===
+  epoch   1 train PP   2.931 valid PP   2.925 gap  -0.006 2s
+  epoch   5 train PP   1.732 valid PP   1.742 gap  +0.010 9s
+  epoch  10 train PP   1.705 valid PP   1.722 gap  +0.018 18s
+  epoch  20 train PP   1.682 valid PP   1.722 gap  +0.040 35s
+  epoch  30 train PP   1.668 valid PP   1.740 gap  +0.073 53s
+  epoch  40 train PP   1.644 valid PP   1.751 gap  +0.107 70s
+  epoch  50 train PP   1.620 valid PP   1.753 gap  +0.133 88s
+  최저 valid 1.722 (epoch 20)
+  50 epoch: train 1.620 valid 1.753 test 1.765 차이 +0.133
+  생성 3,000글자에서 태그 이름이 맞은 쌍 11/53
+  소요 88초
+
+=== 정리 표 ===
+조건 | 최저 valid (epoch) | 50 epoch train | valid | test | 차이 | 태그 쌍
+비순환 0.5 (기준) | 1.728 (12) | 1.475 | 1.850 | 1.861 | +0.375 | 17/57
+비순환 0.5 + 순환 per-step 0.5 | 1.722 (10) | 1.616 | 1.747 | 1.755 | +0.132 | 8/50
+비순환 0.5 + 순환 per-seq 0.5 | 1.717 (19) | 1.630 | 1.731 | 1.742 | +0.101 | 16/55
+비순환 per-seq 0.5 + 순환 per-seq 0.5 | 1.708 (50) | 1.625 | 1.708 | 1.729 | +0.084 | 25/53
+비순환 0.5 + W_hh weight drop 0.5 | 1.722 (20) | 1.620 | 1.753 | 1.765 | +0.133 | 11/53

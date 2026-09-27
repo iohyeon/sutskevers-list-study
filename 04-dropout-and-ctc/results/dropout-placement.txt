@@ -1,0 +1,73 @@
+환경: Python 3.14.7, NumPy 2.5.3, PyTorch 2.14.0, macOS arm64, CPU
+실행일: 2026-09-28
+말뭉치: make_corpus.py (seed 7), 23,546글자, 어휘 28글자, 학습 18,836 / 검증 2,355 / 시험 2,355글자
+명령: python3 dropout_placement.py
+설정: DropLSTM(hidden 384, layer 2), dropout 비율 0.5, epoch 50, 조각 길이 50, 배치 20, Adam lr 3e-3, torch.manual_seed(0), 생성 temperature 0.5 seed 0 으로 3,000글자
+소요: 384초
+
+=== dropout 없음 ===
+  epoch   1 train PP   2.016 valid PP   2.009 gap  -0.007 2s
+  epoch   5 train PP   1.724 valid PP   1.750 gap  +0.026 12s
+  epoch  10 train PP   1.682 valid PP   1.740 gap  +0.058 23s
+  epoch  20 train PP   1.568 valid PP   1.797 gap  +0.230 44s
+  epoch  30 train PP   1.322 valid PP   2.039 gap  +0.717 66s
+  epoch  40 train PP   1.191 valid PP   2.457 gap  +1.266 87s
+  epoch  50 train PP   1.154 valid PP   2.664 gap  +1.510 105s
+  파라미터 2,383,900
+  최저 valid 1.731 (epoch 6)
+  50 epoch: train 1.154 valid 2.664 test 2.699 차이 +1.510
+  생성 3,000글자에서 태그 이름이 맞은 쌍 52/52
+  생성 앞부분: '\\begin{claim} holds and y map we set thus \\end{claim}\n\\begin{example} some x thus then if all \\end{e'
+  소요 105초
+
+=== 비순환 연결에만 0.5 ===
+  epoch   1 train PP   2.244 valid PP   2.230 gap  -0.013 2s
+  epoch   5 train PP   1.723 valid PP   1.740 gap  +0.018 9s
+  epoch  10 train PP   1.704 valid PP   1.732 gap  +0.028 18s
+  epoch  20 train PP   1.673 valid PP   1.734 gap  +0.061 37s
+  epoch  30 train PP   1.638 valid PP   1.743 gap  +0.105 55s
+  epoch  40 train PP   1.573 valid PP   1.805 gap  +0.232 72s
+  epoch  50 train PP   1.475 valid PP   1.850 gap  +0.375 90s
+  파라미터 2,383,900
+  최저 valid 1.728 (epoch 12)
+  50 epoch: train 1.475 valid 1.850 test 1.861 차이 +0.375
+  생성 3,000글자에서 태그 이름이 맞은 쌍 17/57
+  생성 앞부분: '\\begin{claim} holds and y by and for map \\end{proof}\n\\begin{claim} all for and by all x and we \\end{'
+  소요 90초
+
+=== 순환 연결에만 per-step 0.5 ===
+  epoch   1 train PP   2.021 valid PP   2.015 gap  -0.006 2s
+  epoch   5 train PP   1.716 valid PP   1.736 gap  +0.021 8s
+  epoch  10 train PP   1.688 valid PP   1.743 gap  +0.055 17s
+  epoch  20 train PP   1.637 valid PP   1.758 gap  +0.121 36s
+  epoch  30 train PP   1.505 valid PP   1.837 gap  +0.332 55s
+  epoch  40 train PP   1.353 valid PP   2.004 gap  +0.651 73s
+  epoch  50 train PP   1.245 valid PP   2.227 gap  +0.982 91s
+  파라미터 2,383,900
+  최저 valid 1.726 (epoch 7)
+  50 epoch: train 1.245 valid 2.227 test 2.202 차이 +0.982
+  생성 3,000글자에서 태그 이름이 맞은 쌍 28/48
+  생성 앞부분: '\\begin{claim} holds a x y x then have x \\end{lemma}\n\\begin{proof} for set by holds set the if map th'
+  소요 91초
+
+=== 양쪽 모두 0.5 (순환은 per-step) ===
+  epoch   1 train PP   2.269 valid PP   2.257 gap  -0.012 2s
+  epoch   5 train PP   1.727 valid PP   1.738 gap  +0.011 9s
+  epoch  10 train PP   1.704 valid PP   1.722 gap  +0.018 18s
+  epoch  20 train PP   1.683 valid PP   1.731 gap  +0.048 37s
+  epoch  30 train PP   1.663 valid PP   1.736 gap  +0.073 56s
+  epoch  40 train PP   1.643 valid PP   1.739 gap  +0.096 76s
+  epoch  50 train PP   1.616 valid PP   1.747 gap  +0.132 96s
+  파라미터 2,383,900
+  최저 valid 1.722 (epoch 10)
+  50 epoch: train 1.616 valid 1.747 test 1.755 차이 +0.132
+  생성 3,000글자에서 태그 이름이 맞은 쌍 8/50
+  생성 앞부분: '\\begin{claim} holds a if holds so the for the \\end{theorem}\n\\begin{example} the set a then if let th'
+  소요 97초
+
+=== 정리 표 ===
+조건 | 최저 valid (epoch) | 50 epoch train | valid | test | 차이 | 태그 쌍
+dropout 없음 | 1.731 (6) | 1.154 | 2.664 | 2.699 | +1.510 | 52/52
+비순환 연결에만 0.5 | 1.728 (12) | 1.475 | 1.850 | 1.861 | +0.375 | 17/57
+순환 연결에만 per-step 0.5 | 1.726 (7) | 1.245 | 2.227 | 2.202 | +0.982 | 28/48
+양쪽 모두 0.5 (순환은 per-step) | 1.722 (10) | 1.616 | 1.747 | 1.755 | +0.132 | 8/50
