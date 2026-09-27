@@ -1,0 +1,15 @@
+환경: Python 3.14.7, NumPy 2.5.3, PyTorch 2.14.0, macOS arm64, CPU
+실행일: 2026-09-22
+명령: python3 conv_backprop.py
+seed: 없음(무작위 수를 쓰지 않음)
+소요: 0.2초
+
+dK
+ [[3. 7.]
+ [0. 0.]]
+dK가 수치 미분과 일치: True
+dX
+ [[ 0.5 -1.   0. ]
+ [ 1.5  2.  -2. ]
+ [-2.   4.   0. ]]
+dX가 수치 미분과 일치: True

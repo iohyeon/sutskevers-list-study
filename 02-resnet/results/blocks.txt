@@ -1,0 +1,34 @@
+환경: Python 3.14.7, NumPy 2.5.3, PyTorch 2.14.0, torchvision 0.29.0, macOS arm64, CPU
+실행일: 2026-09-22
+명령: python3 blocks.py
+조건: seed 0 (torch.manual_seed(0))
+소요: 약 3초
+
+== 파라미터 수
+BasicBlock(64, 64)    conv: 73728
+Bottleneck(256, 64)   conv: 69632
+BasicBlock(64, 64)    all : 73984
+Bottleneck(256, 64)   all : 70400
+
+== 모양
+BasicBlock  (2,64,56,56)  -> (2, 64, 56, 56)
+Bottleneck  (2,256,56,56) -> (2, 256, 56, 56)
+BasicBlock(64,128,stride=2) (2,64,56,56) -> (2, 128, 28, 28)
+projection shortcut conv: 8192
+
+== skip을 끄면
+use_skip=True  params: 73984
+use_skip=False params: 73984
+
+== 초기 상태에서 항등으로 동작하는가
+post-activation, zero-init, 입력 >= 0     : y == x -> True
+post-activation, zero-init, 음수 포함 입력 : y == x -> False
+pre-activation,  F = 0,     음수 포함 입력 : y == x -> True
+
+== torchvision 구현
+resnet18   params: 11,689,512
+resnet34   params: 21,797,672
+resnet50   params: 25,557,032
+resnet101  params: 44,549,160
+resnet152  params: 60,192,808
+resnet50 layer1[0] downsample: True | layer1[1] downsample: False

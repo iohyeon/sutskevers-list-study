@@ -1,0 +1,17 @@
+환경: Python 3.14.7, NumPy 2.5.3, PyTorch 2.14.0, macOS arm64, CPU
+실행일: 2026-09-21
+말뭉치: make_corpus.py (random.seed(0)), 148,458글자, 어휘 25글자, 학습 90% / 시험 10%
+명령: python3 char_lstm.py --cell lstm --epochs 40
+설정: nn.LSTM, forget gate bias 기본 초기화, hidden 128, layer 1, 조각 길이 64, 배치 32, torch.manual_seed(0), 생성 seed 0, 생성 길이 6,000글자
+소요: 65초
+
+params 138521
+epoch 1 train loss 0.455 test PP 1.576 1s
+epoch 6 train loss 0.429 test PP 1.535 8s
+epoch 12 train loss 0.412 test PP 1.509 18s
+epoch 20 train loss 0.411 test PP 1.508 31s
+epoch 40 train loss 0.407 test PP 1.511 61s
+T=0.2 closer ok/bad=(133, 0)
+T=0.5 closer ok/bad=(126, 0)
+T=1.0 closer ok/bad=(116, 0)
+T=1.5 closer ok/bad=(98, 10)

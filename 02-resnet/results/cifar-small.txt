@@ -1,0 +1,42 @@
+환경: Python 3.14.7, NumPy 2.5.3, PyTorch 2.14.0, torchvision 0.29.0, macOS arm64, CPU (--device cpu)
+실행일: 2026-09-22
+데이터: CIFAR-10 학습 이미지 앞쪽 일부(--limit), 테스트 10,000장 전체. 실행 환경에서는 torchvision 다운로드 대신 같은 CIFAR-10 데이터의 로컬 사본을 읽었습니다
+명령:
+  python3 resnet_cifar.py --n 1 --plain --limit 5000 --epochs 3 --seed 0 --device cpu   # plain-8
+  python3 resnet_cifar.py --n 1         --limit 5000 --epochs 3 --seed 0 --device cpu   # resnet-8
+  python3 resnet_cifar.py --n 3 --plain --limit 5000 --epochs 3 --seed 0 --device cpu   # plain-20
+  python3 resnet_cifar.py --n 3         --limit 5000 --epochs 3 --seed 0 --device cpu   # resnet-20
+  python3 resnet_cifar.py --n 9 --plain --limit 2000 --epochs 2 --seed 0 --device cpu   # plain-56
+  python3 resnet_cifar.py --n 9         --limit 2000 --epochs 2 --seed 0 --device cpu   # resnet-56
+설정: SGD lr 0.1, momentum 0.9, weight decay 1e-4, 배치 128, 전체 epoch의 50%와 75%에서 학습률 1/10
+소요: 모델 하나에 2~4분 (다른 작업과 같이 돌던 상태, elapsed 줄 참고)
+한계: 코드가 끝까지 돌고 오차가 내려가는지 확인하는 용도입니다. 이 길이로는 plain과 residual, 깊이의 차이를 말할 수 없습니다
+
+plain-8  params=75,290  device=cpu
+[plain-8] epoch   1  train_err 79.36%  test_err 83.07%  (39s)
+[plain-8] epoch   2  train_err 71.74%  test_err 68.92%  (40s)
+[plain-8] epoch   3  train_err 67.68%  test_err 69.19%  (42s)
+elapsed 123s
+resnet-8  params=78,042  device=cpu
+[resnet-8] epoch   1  train_err 77.78%  test_err 79.80%  (43s)
+[resnet-8] epoch   2  train_err 71.82%  test_err 70.86%  (43s)
+[resnet-8] epoch   3  train_err 67.32%  test_err 68.69%  (59s)
+elapsed 147s
+plain-20  params=269,722  device=cpu
+[plain-20] epoch   1  train_err 81.68%  test_err 83.59%  (83s)
+[plain-20] epoch   2  train_err 75.02%  test_err 70.42%  (78s)
+[plain-20] epoch   3  train_err 70.58%  test_err 68.89%  (74s)
+elapsed 238s
+resnet-20  params=272,474  device=cpu
+[resnet-20] epoch   1  train_err 81.46%  test_err 84.34%  (80s)
+[resnet-20] epoch   2  train_err 68.80%  test_err 66.21%  (80s)
+[resnet-20] epoch   3  train_err 63.64%  test_err 63.12%  (80s)
+elapsed 242s
+plain-56  params=853,018  device=cpu
+[plain-56] epoch   1  train_err 90.60%  test_err 89.52%  (104s)
+[plain-56] epoch   2  train_err 89.15%  test_err 89.44%  (105s)
+elapsed 212s
+resnet-56  params=855,770  device=cpu
+[resnet-56] epoch   1  train_err 89.85%  test_err 90.00%  (112s)
+[resnet-56] epoch   2  train_err 88.80%  test_err 85.92%  (109s)
+elapsed 223s

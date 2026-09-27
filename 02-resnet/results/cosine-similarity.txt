@@ -1,0 +1,9 @@
+환경: Python 3.14.7, NumPy 2.5.3, PyTorch 2.14.0, torchvision 0.29.0, macOS arm64, CPU
+실행일: 2026-09-22
+명령: python3 cosine_similarity.py
+조건: seed 0, 1, 2. 학습 없이 초기화 상태, BN은 train 모드
+소요: 약 7초
+
+seed 0: plain-56 0.001   resnet-56 0.430
+seed 1: plain-56 0.013   resnet-56 0.411
+seed 2: plain-56 0.023   resnet-56 0.435

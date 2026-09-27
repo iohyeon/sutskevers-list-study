@@ -1,0 +1,15 @@
+환경: Python 3.14.7, NumPy 2.5.3, PyTorch 2.14.0, macOS arm64, CPU
+실행일: 2026-09-21
+말뭉치: make_corpus.py (random.seed(0)), 148,458글자, 어휘 25글자, 학습 90% / 시험 10%
+명령: python3 char_rnn.py 96 64 12000
+설정: NumPy vanilla RNN, hidden 96, 조각 길이 64, 갱신 12,000회, Adagrad lr 0.1, clip 5.0, 초기화 seed 0
+소요: 31초
+
+grad check, worst relative error: 8.13299735387754e-09
+iter 0 loss/char 3.219 PP 25.007 0s
+iter 4000 loss/char 0.454 PP 1.575 10s
+iter 8000 loss/char 0.450 PP 1.568 20s
+iter 12000 loss/char 0.443 PP 1.558 31s
+test PP 1.561
+T 0.5 closer ok/bad (73, 63)
+T 1.0 closer ok/bad (61, 57)

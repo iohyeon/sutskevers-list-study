@@ -1,0 +1,18 @@
+환경: Python 3.14.7, NumPy 2.5.3, PyTorch 2.14.0, macOS arm64, CPU
+실행일: 2026-09-21
+말뭉치: make_corpus.py (random.seed(0)), 148,458글자, 어휘 25글자, 학습 90% / 시험 10%
+명령: python3 intervene.py  (lstm.txt 의 40 epoch 모델을 읽는다)
+설정: 환경 이름을 읽은 직후 cell state의 상위 k개 차원을 반대 환경의 평균값으로 덮어쓰고 줄 끝까지 200번 생성, temperature 0.5
+소요: 7초
+
+분리도 상위 5개 차원: [69, 88, 61, 44, 17] [3.52, 1.39, 1.32, 1.15, 1.01]
+\begin{proof} 로 시작, 상위   0개 차원을 반대 환경 평균으로 덮어씀 -> {'proof': 200}
+\begin{proof} 로 시작, 상위   1개 차원을 반대 환경 평균으로 덮어씀 -> {'proof': 199, 'lemma': 1}
+\begin{proof} 로 시작, 상위   3개 차원을 반대 환경 평균으로 덮어씀 -> {'lemma': 200}
+\begin{proof} 로 시작, 상위  10개 차원을 반대 환경 평균으로 덮어씀 -> {'lemma': 200}
+\begin{proof} 로 시작, 상위 128개 차원을 반대 환경 평균으로 덮어씀 -> {'lemma': 200}
+\begin{lemma} 로 시작, 상위   0개 차원을 반대 환경 평균으로 덮어씀 -> {'lemma': 200}
+\begin{lemma} 로 시작, 상위   1개 차원을 반대 환경 평균으로 덮어씀 -> {'lemma': 149, 'proof': 51}
+\begin{lemma} 로 시작, 상위   3개 차원을 반대 환경 평균으로 덮어씀 -> {'proof': 200}
+\begin{lemma} 로 시작, 상위  10개 차원을 반대 환경 평균으로 덮어씀 -> {'proof': 200}
+\begin{lemma} 로 시작, 상위 128개 차원을 반대 환경 평균으로 덮어씀 -> {'proof': 200}

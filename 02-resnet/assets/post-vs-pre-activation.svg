@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" width="760" height="520">
+<defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#333"/></marker><marker id="g" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#1a7f37"/></marker></defs>
+<rect x="0" y="0" width="760" height="520" fill="#ffffff" stroke="#d0d7de"/>
+<text x="190" y="28" text-anchor="middle" font-size="15" fill="#111" font-weight="bold" font-family="-apple-system,Helvetica,Arial,sans-serif">(a) original: post-activation</text>
+<text x="570" y="28" text-anchor="middle" font-size="15" fill="#111" font-weight="bold" font-family="-apple-system,Helvetica,Arial,sans-serif">(b) ResNet v2: full pre-activation</text>
+<text x="170" y="56" text-anchor="middle" font-size="14" fill="#111" font-weight="bold" font-family="-apple-system,Helvetica,Arial,sans-serif">x_l</text>
+<line x1="170" y1="64" x2="170" y2="86" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="110" y="88" width="120" height="30" rx="6" fill="#eaf2ff" stroke="#2f6feb" stroke-width="1.5"/><text x="170.0" y="108.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">weight</text>
+<line x1="170" y1="118" x2="170" y2="134" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="110" y="136" width="120" height="30" rx="6" fill="#fff8c5" stroke="#9a6700" stroke-width="1.5"/><text x="170.0" y="156.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">BN</text>
+<line x1="170" y1="166" x2="170" y2="182" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="110" y="184" width="120" height="30" rx="6" fill="#ffebe9" stroke="#cf222e" stroke-width="1.5"/><text x="170.0" y="204.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">ReLU</text>
+<line x1="170" y1="214" x2="170" y2="230" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="110" y="232" width="120" height="30" rx="6" fill="#eaf2ff" stroke="#2f6feb" stroke-width="1.5"/><text x="170.0" y="252.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">weight</text>
+<line x1="170" y1="262" x2="170" y2="278" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="110" y="280" width="120" height="30" rx="6" fill="#fff8c5" stroke="#9a6700" stroke-width="1.5"/><text x="170.0" y="300.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">BN</text>
+<line x1="170" y1="310" x2="170" y2="326" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<circle cx="170" cy="342" r="14" fill="#fff8c5" stroke="#9a6700" stroke-width="1.5"/><text x="170" y="348" text-anchor="middle" font-size="18" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">+</text>
+<path d="M170,70 L320,70 L320,342 L186,342" fill="none" stroke="#1a7f37" stroke-width="2.5" marker-end="url(#g)"/>
+<line x1="170" y1="356" x2="170" y2="374" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="110" y="376" width="120" height="30" rx="6" fill="#ffebe9" stroke="#cf222e" stroke-width="1.5"/><text x="170.0" y="396.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">ReLU</text>
+<line x1="170" y1="406" x2="170" y2="428" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<text x="170" y="448" text-anchor="middle" font-size="14" fill="#111" font-weight="bold" font-family="-apple-system,Helvetica,Arial,sans-serif">x_(l+1)</text>
+<text x="550" y="56" text-anchor="middle" font-size="14" fill="#111" font-weight="bold" font-family="-apple-system,Helvetica,Arial,sans-serif">x_l</text>
+<line x1="550" y1="64" x2="550" y2="86" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="490" y="88" width="120" height="30" rx="6" fill="#fff8c5" stroke="#9a6700" stroke-width="1.5"/><text x="550.0" y="108.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">BN</text>
+<line x1="550" y1="118" x2="550" y2="134" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="490" y="136" width="120" height="30" rx="6" fill="#ffebe9" stroke="#cf222e" stroke-width="1.5"/><text x="550.0" y="156.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">ReLU</text>
+<line x1="550" y1="166" x2="550" y2="182" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="490" y="184" width="120" height="30" rx="6" fill="#eaf2ff" stroke="#2f6feb" stroke-width="1.5"/><text x="550.0" y="204.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">weight</text>
+<line x1="550" y1="214" x2="550" y2="230" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="490" y="232" width="120" height="30" rx="6" fill="#fff8c5" stroke="#9a6700" stroke-width="1.5"/><text x="550.0" y="252.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">BN</text>
+<line x1="550" y1="262" x2="550" y2="278" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="490" y="280" width="120" height="30" rx="6" fill="#ffebe9" stroke="#cf222e" stroke-width="1.5"/><text x="550.0" y="300.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">ReLU</text>
+<line x1="550" y1="310" x2="550" y2="326" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="490" y="328" width="120" height="30" rx="6" fill="#eaf2ff" stroke="#2f6feb" stroke-width="1.5"/><text x="550.0" y="348.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">weight</text>
+<line x1="550" y1="358" x2="550" y2="374" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<circle cx="550" cy="390" r="14" fill="#fff8c5" stroke="#9a6700" stroke-width="1.5"/><text x="550" y="396" text-anchor="middle" font-size="18" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">+</text>
+<path d="M550,70 L700,70 L700,390 L566,390" fill="none" stroke="#1a7f37" stroke-width="2.5" marker-end="url(#g)"/>
+<line x1="550" y1="404" x2="550" y2="426" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<text x="550" y="446" text-anchor="middle" font-size="14" fill="#111" font-weight="bold" font-family="-apple-system,Helvetica,Arial,sans-serif">x_(l+1)</text>
+<text x="190" y="488" text-anchor="middle" font-size="13" fill="#cf222e" font-family="-apple-system,Helvetica,Arial,sans-serif">덧셈 뒤의 ReLU가 초록색 경로의 값도 자른다</text>
+<text x="570" y="488" text-anchor="middle" font-size="13" fill="#1a7f37" font-family="-apple-system,Helvetica,Arial,sans-serif">초록색 경로에는 아무 연산도 없다 (순수 항등)</text>
+<line x1="380" y1="45" x2="380" y2="500" stroke="#d0d7de" stroke-dasharray="4 4"/>
+</svg>

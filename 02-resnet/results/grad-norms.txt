@@ -1,0 +1,104 @@
+환경: Python 3.14.7, NumPy 2.5.3, PyTorch 2.14.0, torchvision 0.29.0, macOS arm64, CPU
+실행일: 2026-09-22
+명령: python3 grad_norms.py
+조건: seed 0. 학습 없이 초기화 상태에서 순전파와 역전파 한 번
+소요: 약 6초
+
+
+== sigmoid, 50-layer
+  0 0.weight                    0.000e+00
+  5 10.weight                   1.653e-41
+ 10 20.weight                   2.927e-37
+ 15 30.weight                   5.109e-33
+ 20 40.weight                   8.254e-29
+ 25 50.weight                   1.427e-24
+ 30 60.weight                   2.250e-20
+ 35 70.weight                   4.197e-16
+ 40 80.weight                   6.473e-12
+ 45 90.weight                   1.468e-07
+ 50 100.weight                  1.329e-02
+
+== ReLU, 50-layer, 기본 초기화
+  0 0.weight                    1.766e-22
+  5 10.weight                   4.810e-22
+ 10 20.weight                   4.999e-20
+ 15 30.weight                   4.009e-18
+ 20 40.weight                   3.049e-16
+ 25 50.weight                   2.462e-14
+ 30 60.weight                   1.754e-12
+ 35 70.weight                   1.660e-10
+ 40 80.weight                   1.680e-08
+ 45 90.weight                   1.698e-06
+ 50 100.weight                  6.744e-04
+
+== ReLU, 50-layer, He 초기화
+  0 0.weight                    3.746e-03
+  5 10.weight                   3.267e-03
+ 10 20.weight                   3.034e-03
+ 15 30.weight                   2.771e-03
+ 20 40.weight                   3.231e-03
+ 25 50.weight                   3.311e-03
+ 30 60.weight                   2.270e-03
+ 35 70.weight                   1.674e-03
+ 40 80.weight                   1.532e-03
+ 45 90.weight                   1.654e-03
+ 50 100.weight                  6.970e-03
+
+== BN 없는 MLP, std=0.02, skip=False
+  0 layers.0.weight             7.041e-35
+  5 layers.5.weight             7.086e-35
+ 10 layers.10.weight            7.190e-35
+ 15 layers.15.weight            6.127e-35
+ 20 layers.20.weight            7.819e-35
+ 25 layers.25.weight            7.201e-35
+ 30 layers.30.weight            5.473e-35
+ 35 layers.35.weight            4.043e-35
+ 40 layers.40.weight            4.046e-35
+ 45 layers.45.weight            3.399e-35
+ 50 head.weight                 1.047e-34
+
+== BN 없는 MLP, std=0.02, skip=True
+  0 layers.0.weight             2.716e-01
+  5 layers.5.weight             5.430e-01
+ 10 layers.10.weight            8.980e-01
+ 15 layers.15.weight            1.171e+00
+ 20 layers.20.weight            1.267e+00
+ 25 layers.25.weight            1.330e+00
+ 30 layers.30.weight            1.512e+00
+ 35 layers.35.weight            1.931e+00
+ 40 layers.40.weight            2.738e+00
+ 45 layers.45.weight            4.482e+00
+ 50 head.weight                 9.224e+01
+
+BN 없는 MLP, std=0.1, skip=False: 가중치 기울기 RMS 최소 1.641e+00, 최대 8.086e+00
+BN 없는 MLP, std=0.1, skip=True: 가중치 기울기 RMS 최소 2.900e+09, 최대 5.643e+10
+
+== CifarNet-56, skip=False
+  0 conv1.weight                2.781e+01
+  6 blocks.2.conv2.weight       3.864e+00
+ 12 blocks.5.conv2.weight       1.297e+00
+ 18 blocks.8.conv2.weight       4.240e-01
+ 24 blocks.11.conv2.weight      1.112e-01
+ 30 blocks.14.conv2.weight      3.613e-02
+ 36 blocks.17.conv2.weight      1.299e-02
+ 42 blocks.20.conv2.weight      3.359e-03
+ 48 blocks.23.conv2.weight      1.243e-03
+ 54 blocks.26.conv2.weight      1.314e-03
+ 55 fc.weight                   1.542e-02
+
+== CifarNet-56, skip=True
+  0 conv1.weight                3.124e-01
+  6 blocks.2.conv2.weight       4.159e-02
+ 12 blocks.5.conv2.weight       2.197e-02
+ 18 blocks.8.conv2.weight       1.513e-02
+ 24 blocks.11.conv1.weight      1.008e-02
+ 30 blocks.14.conv1.weight      5.567e-03
+ 36 blocks.17.conv1.weight      3.705e-03
+ 42 blocks.19.conv2.weight      2.278e-03
+ 48 blocks.22.conv2.weight      1.237e-03
+ 54 blocks.25.conv2.weight      8.207e-04
+ 57 fc.weight                   1.903e-01
+
+resnet-20: 첫 conv / 마지막 conv 기울기 RMS 비율 = 4.656e+01
+plain-56: 첫 conv / 마지막 conv 기울기 RMS 비율 = 1.804e+04
+resnet-56: 첫 conv / 마지막 conv 기울기 RMS 비율 = 3.943e+02

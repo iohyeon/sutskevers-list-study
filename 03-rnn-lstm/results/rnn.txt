@@ -1,0 +1,17 @@
+환경: Python 3.14.7, NumPy 2.5.3, PyTorch 2.14.0, macOS arm64, CPU
+실행일: 2026-09-21
+말뭉치: make_corpus.py (random.seed(0)), 148,458글자, 어휘 25글자, 학습 90% / 시험 10%
+명령: python3 char_lstm.py --cell rnn --epochs 40
+설정: nn.RNN(tanh), hidden 128, layer 1, 조각 길이 64, 배치 32, torch.manual_seed(0), 생성 seed 0, 생성 길이 6,000글자
+소요: 27초
+
+params 39449
+epoch 1 train loss 0.481 test PP 1.616 1s
+epoch 6 train loss 0.443 test PP 1.558 3s
+epoch 12 train loss 0.429 test PP 1.542 7s
+epoch 20 train loss 0.427 test PP 1.539 11s
+epoch 40 train loss 0.431 test PP 1.542 23s
+T=0.2 closer ok/bad=(73, 55)
+T=0.5 closer ok/bad=(57, 68)
+T=1.0 closer ok/bad=(56, 52)
+T=1.5 closer ok/bad=(43, 51)

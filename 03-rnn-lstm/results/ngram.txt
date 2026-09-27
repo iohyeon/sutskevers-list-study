@@ -1,0 +1,13 @@
+환경: Python 3.14.7, NumPy 2.5.3, PyTorch 2.14.0, macOS arm64, CPU
+실행일: 2026-09-21
+말뭉치: make_corpus.py (random.seed(0)), 148,458글자, 어휘 25글자, 학습 90% / 시험 10%
+명령: python3 ngram.py
+설정: 글자 n-gram, n은 문맥 길이, smoothing add-0.01, 생성 seed 0, 생성 길이 6,000글자
+지표: PP는 시험 perplexity, closer ok/bad는 생성한 텍스트에서 여는 환경 이름과 닫는 환경 이름이 같은 줄 / 다른 줄
+소요: 1초 미만
+
+n= 1 contexts=    26 PP(no smoothing)=     inf PP(add-0.01)=   2.909 closer ok/bad=0/0
+n= 2 contexts=    64 PP(no smoothing)=     inf PP(add-0.01)=   1.743 closer ok/bad=3/23
+n= 4 contexts=   396 PP(no smoothing)=     inf PP(add-0.01)=   1.604 closer ok/bad=35/34
+n= 8 contexts=  8240 PP(no smoothing)=     inf PP(add-0.01)=   1.782 closer ok/bad=64/57
+n=12 contexts= 36180 PP(no smoothing)=     inf PP(add-0.01)=   3.177 closer ok/bad=44/57

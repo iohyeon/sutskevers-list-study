@@ -1,0 +1,31 @@
+환경: Python 3.14.7, NumPy 2.5.3, PyTorch 2.14.0, torchvision 0.29.0, macOS arm64, CPU
+실행일: 2026-09-22
+명령: python3 param_count.py
+조건: seed 0
+소요: 약 5초
+
+== bottleneck 대 3x3 두 장 (256채널)
+bottleneck 69,632   3x3 두 장 1,179,648   비율 16.9
+64채널 basic block의 3x3 두 장 73,728
+
+== ResNeXt 32x4d
+경로 하나 2,192   경로 32개 70,144   grouped 표현 70,144
+grouped 3x3의 가중치 모양: (128, 4, 3, 3) 개수 4608
+경로 32개를 더한 출력 == grouped 출력: True
+
+== conv 뒤 BN에서 bias가 상쇄되는가
+bias 없는 conv + BN == bias 있는 conv + BN: True
+
+== BN 손계산
+x_hat: [-1.342, -0.447, 0.447, 1.342]
+y (gamma=2, beta=1): [-1.683, 0.106, 1.894, 3.683]
+x + 100 의 x_hat: [-1.342, -0.447, 0.447, 1.342]
+
+== 수용 영역을 기울기로 재기 (3x3, stride 1)
+dilation 1,1,1,1,1: layer별 수용 영역 [3, 5, 7, 9, 11]
+dilation 1,2,4,8,16: layer별 수용 영역 [3, 7, 15, 31, 63]
+
+== VGG-16
+전체 138,357,544   FC 123,642,856 (89.4%)
+VGG-19 전체 143,667,240
+ResNet-152 마지막 FC 2,049,000

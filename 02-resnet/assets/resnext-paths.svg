@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 420" width="820" height="420">
+<defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#333"/></marker><marker id="g" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#1a7f37"/></marker></defs>
+<rect x="0" y="0" width="820" height="420" fill="#ffffff" stroke="#d0d7de"/>
+<text x="410" y="28" text-anchor="middle" font-size="16" fill="#111" font-weight="bold" font-family="-apple-system,Helvetica,Arial,sans-serif">ResNeXt block: 같은 모양의 경로 32개 (cardinality C = 32)</text>
+<text x="410" y="51" text-anchor="middle" font-size="14" fill="#111" font-weight="bold" font-family="-apple-system,Helvetica,Arial,sans-serif">256-d 입력</text>
+<path d="M410,66 L110,96" fill="none" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="48" y="98" width="124" height="32" rx="6" fill="#dafbe1" stroke="#1a7f37" stroke-width="1.5"/><text x="110.0" y="119.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">1x1, 256→4</text>
+<line x1="110" y1="130" x2="110" y2="150" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="48" y="152" width="124" height="32" rx="6" fill="#eaf2ff" stroke="#2f6feb" stroke-width="1.5"/><text x="110.0" y="173.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">3x3, 4→4</text>
+<line x1="110" y1="184" x2="110" y2="204" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="48" y="206" width="124" height="32" rx="6" fill="#dafbe1" stroke="#1a7f37" stroke-width="1.5"/><text x="110.0" y="227.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">1x1, 4→256</text>
+<path d="M110,238 L410,296" fill="none" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<text x="110" y="258" text-anchor="middle" font-size="12" fill="#555" font-family="-apple-system,Helvetica,Arial,sans-serif">경로 1</text>
+<path d="M410,66 L260,96" fill="none" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="198" y="98" width="124" height="32" rx="6" fill="#dafbe1" stroke="#1a7f37" stroke-width="1.5"/><text x="260.0" y="119.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">1x1, 256→4</text>
+<line x1="260" y1="130" x2="260" y2="150" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="198" y="152" width="124" height="32" rx="6" fill="#eaf2ff" stroke="#2f6feb" stroke-width="1.5"/><text x="260.0" y="173.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">3x3, 4→4</text>
+<line x1="260" y1="184" x2="260" y2="204" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="198" y="206" width="124" height="32" rx="6" fill="#dafbe1" stroke="#1a7f37" stroke-width="1.5"/><text x="260.0" y="227.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">1x1, 4→256</text>
+<path d="M260,238 L410,296" fill="none" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<text x="260" y="258" text-anchor="middle" font-size="12" fill="#555" font-family="-apple-system,Helvetica,Arial,sans-serif">경로 2</text>
+<path d="M410,66 L410,96" fill="none" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="348" y="98" width="124" height="32" rx="6" fill="#dafbe1" stroke="#1a7f37" stroke-width="1.5"/><text x="410.0" y="119.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">1x1, 256→4</text>
+<line x1="410" y1="130" x2="410" y2="150" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="348" y="152" width="124" height="32" rx="6" fill="#eaf2ff" stroke="#2f6feb" stroke-width="1.5"/><text x="410.0" y="173.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">3x3, 4→4</text>
+<line x1="410" y1="184" x2="410" y2="204" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="348" y="206" width="124" height="32" rx="6" fill="#dafbe1" stroke="#1a7f37" stroke-width="1.5"/><text x="410.0" y="227.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">1x1, 4→256</text>
+<path d="M410,238 L410,296" fill="none" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<text x="410" y="262" text-anchor="middle" font-size="12" fill="#555" font-family="-apple-system,Helvetica,Arial,sans-serif">경로 3</text>
+<path d="M410,66 L710,96" fill="none" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="648" y="98" width="124" height="32" rx="6" fill="#dafbe1" stroke="#1a7f37" stroke-width="1.5"/><text x="710.0" y="119.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">1x1, 256→4</text>
+<line x1="710" y1="130" x2="710" y2="150" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="648" y="152" width="124" height="32" rx="6" fill="#eaf2ff" stroke="#2f6feb" stroke-width="1.5"/><text x="710.0" y="173.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">3x3, 4→4</text>
+<line x1="710" y1="184" x2="710" y2="204" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="648" y="206" width="124" height="32" rx="6" fill="#dafbe1" stroke="#1a7f37" stroke-width="1.5"/><text x="710.0" y="227.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">1x1, 4→256</text>
+<path d="M710,238 L410,296" fill="none" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<text x="710" y="258" text-anchor="middle" font-size="12" fill="#555" font-family="-apple-system,Helvetica,Arial,sans-serif">경로 32</text>
+<text x="560" y="170" text-anchor="middle" font-size="28" fill="#555" font-family="-apple-system,Helvetica,Arial,sans-serif">. . .</text>
+<text x="560" y="196" text-anchor="middle" font-size="12" fill="#555" font-family="-apple-system,Helvetica,Arial,sans-serif">(총 32개)</text>
+<circle cx="410" cy="312" r="14" fill="#fff8c5" stroke="#9a6700" stroke-width="1.5"/><text x="410" y="318" text-anchor="middle" font-size="18" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">+</text>
+<text x="470" y="318" text-anchor="start" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">32개 출력을 원소별로 더한다</text>
+<path d="M460,46 L800,46 L800,372 L426,372" fill="none" stroke="#1a7f37" stroke-width="2.5" marker-end="url(#g)"/>
+<line x1="410" y1="326" x2="410" y2="356" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<circle cx="410" cy="372" r="14" fill="#fff8c5" stroke="#9a6700" stroke-width="1.5"/><text x="410" y="378" text-anchor="middle" font-size="18" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">+</text>
+<text x="230" y="378" text-anchor="middle" font-size="13" fill="#1a7f37" font-family="-apple-system,Helvetica,Arial,sans-serif">여기에 shortcut x를 더한다</text>
+<text x="410" y="408" text-anchor="middle" font-size="12.5" fill="#555" font-family="-apple-system,Helvetica,Arial,sans-serif">가중치는 경로마다 따로 둠. 경로당 1,024 + 144 + 1,024 = 2,192개, 32개 합계 70,144개 (bottleneck 69,632개와 비슷)</text>
+</svg>

@@ -1,0 +1,17 @@
+환경: Python 3.14.7, NumPy 2.5.3, PyTorch 2.14.0, macOS arm64, CPU
+실행일: 2026-09-21
+말뭉치: make_corpus.py (random.seed(0)), 148,458글자, 어휘 25글자, 학습 90% / 시험 10%
+명령: python3 probe.py  (lstm.txt 의 40 epoch 모델을 읽는다)
+지표: 분리도는 proof 본문과 lemma 본문에서의 cell state 평균의 차이를 두 표준편차의 합으로 나눈 값
+소요: 2초
+
+가장 잘 가르는 차원: [69, 88, 61] 분리도: [3.52, 1.39, 1.32]
+차원 69: proof 본문 평균 -4.80, lemma 본문 평균 +3.73
+\begin{lemma} a we set holds holds a let set let \end{lemma}
+--.+--++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\begin{proof} let y so let holds the then by map \end{proof}
+--.+--+.---------------------------------------------+------
+\begin{proof} x the and map \end{proof}
+--.+--+.------------------------+------
+\begin{lemma} set be a we so \end{lemma}
+--.+--+++++++++++++++++++++++++++..+++++

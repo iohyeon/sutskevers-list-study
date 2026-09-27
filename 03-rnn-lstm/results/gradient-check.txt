@@ -1,0 +1,10 @@
+환경: Python 3.14.7, NumPy 2.5.3, PyTorch 2.14.0, macOS arm64, CPU
+실행일: 2026-09-21
+말뭉치: make_corpus.py (random.seed(0)), 148,458글자, 어휘 25글자, 학습 90% / 시험 10%
+명령: python3 gradient_check.py
+설정: CharRNN(어휘 5, hidden 4), 길이 6인 무작위 입력, 중앙 차분 h=1e-5, 모든 파라미터 원소 비교
+소요: 1초 미만
+
+seed 1: worst relative error = 8.133e-09
+seed 2: worst relative error = 5.148e-10
+seed 3: worst relative error = 1.009e-09

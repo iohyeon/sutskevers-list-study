@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470">
+<defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#333"/></marker><marker id="g" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#1a7f37"/></marker></defs>
+<rect x="0" y="0" width="760" height="470" fill="#ffffff" stroke="#d0d7de"/>
+<text x="190" y="28" text-anchor="middle" font-size="15" fill="#111" font-weight="bold" font-family="-apple-system,Helvetica,Arial,sans-serif">Basic block (ResNet-18/34)</text>
+<text x="570" y="28" text-anchor="middle" font-size="15" fill="#111" font-weight="bold" font-family="-apple-system,Helvetica,Arial,sans-serif">Bottleneck block (ResNet-50/101/152)</text>
+<text x="150" y="58" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">64-d 입력</text>
+<line x1="150" y1="64" x2="150" y2="88" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="80" y="90" width="140" height="40" rx="6" fill="#eaf2ff" stroke="#2f6feb" stroke-width="1.5"/><text x="150.0" y="115.0" text-anchor="middle" font-size="14" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">3x3, 64</text>
+<line x1="150" y1="130" x2="150" y2="150" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="80" y="152" width="140" height="30" rx="6" fill="#ffebe9" stroke="#cf222e" stroke-width="1.5"/><text x="150.0" y="172.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">BN, ReLU</text>
+<line x1="150" y1="182" x2="150" y2="202" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="80" y="204" width="140" height="40" rx="6" fill="#eaf2ff" stroke="#2f6feb" stroke-width="1.5"/><text x="150.0" y="229.0" text-anchor="middle" font-size="14" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">3x3, 64, BN</text>
+<line x1="150" y1="244" x2="150" y2="300" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<circle cx="150" cy="316" r="14" fill="#fff8c5" stroke="#9a6700" stroke-width="1.5"/><text x="150" y="322" text-anchor="middle" font-size="18" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">+</text>
+<path d="M150,72 L310,72 L310,316 L166,316" fill="none" stroke="#1a7f37" stroke-width="2.5" marker-end="url(#g)"/>
+<line x1="150" y1="330" x2="150" y2="352" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="80" y="354" width="140" height="30" rx="6" fill="#ffebe9" stroke="#cf222e" stroke-width="1.5"/><text x="150.0" y="374.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">ReLU</text>
+<text x="190" y="412" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">가중치: 2 x (3x3x64x64) = 73,728</text>
+<text x="190" y="432" text-anchor="middle" font-size="12" fill="#555" font-family="-apple-system,Helvetica,Arial,sans-serif">(bias 없음, BN 파라미터 제외)</text>
+<text x="530" y="58" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">256-d 입력</text>
+<line x1="530" y1="64" x2="530" y2="84" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="450" y="86" width="160" height="36" rx="6" fill="#dafbe1" stroke="#1a7f37" stroke-width="1.5"/><text x="530.0" y="109.0" text-anchor="middle" font-size="14" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">1x1, 64  (압축)</text>
+<line x1="530" y1="122" x2="530" y2="138" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="450" y="140" width="160" height="26" rx="6" fill="#ffebe9" stroke="#cf222e" stroke-width="1.5"/><text x="530.0" y="158.0" text-anchor="middle" font-size="12" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">BN, ReLU</text>
+<line x1="530" y1="166" x2="530" y2="182" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="450" y="184" width="160" height="36" rx="6" fill="#eaf2ff" stroke="#2f6feb" stroke-width="1.5"/><text x="530.0" y="207.0" text-anchor="middle" font-size="14" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">3x3, 64  (공간 처리)</text>
+<line x1="530" y1="220" x2="530" y2="236" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="450" y="238" width="160" height="26" rx="6" fill="#ffebe9" stroke="#cf222e" stroke-width="1.5"/><text x="530.0" y="256.0" text-anchor="middle" font-size="12" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">BN, ReLU</text>
+<line x1="530" y1="264" x2="530" y2="280" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="450" y="282" width="160" height="36" rx="6" fill="#dafbe1" stroke="#1a7f37" stroke-width="1.5"/><text x="530.0" y="305.0" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">1x1, 256 (복원), BN</text>
+<line x1="530" y1="318" x2="530" y2="338" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<circle cx="530" cy="354" r="14" fill="#fff8c5" stroke="#9a6700" stroke-width="1.5"/><text x="530" y="360" text-anchor="middle" font-size="18" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">+</text>
+<path d="M530,72 L700,72 L700,354 L546,354" fill="none" stroke="#1a7f37" stroke-width="2.5" marker-end="url(#g)"/>
+<line x1="530" y1="368" x2="530" y2="386" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="450" y="388" width="160" height="28" rx="6" fill="#ffebe9" stroke="#cf222e" stroke-width="1.5"/><text x="530.0" y="407.0" text-anchor="middle" font-size="12" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">ReLU</text>
+<text x="570" y="440" text-anchor="middle" font-size="13" fill="#111" font-family="-apple-system,Helvetica,Arial,sans-serif">가중치: 16,384 + 36,864 + 16,384 = 69,632</text>
+<text x="570" y="458" text-anchor="middle" font-size="12" fill="#555" font-family="-apple-system,Helvetica,Arial,sans-serif">3x3, 256 두 장이면 1,179,648 (약 17배)</text>
+<line x1="380" y1="45" x2="380" y2="455" stroke="#d0d7de" stroke-dasharray="4 4"/>
+</svg>
