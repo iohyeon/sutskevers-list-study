@@ -104,7 +104,7 @@ def closer_probe(log):
         "학습에 없으므로")
     log("  닫는 이름을 맞히려면 문맥에 있는 여는 이름을 읽는 수밖에 없다.")
     log(f"  맞혀야 하는 글자는 환경 이름의 첫 글자 {sorted(set(chars[k] for k in y.tolist()))}, "
-        f"고르기만 하면 확률 {1 / 6:.3f}")
+        f"고르기만 하면 확률 {1 / len(set(chars[k] for k in y.tolist())):.3f}")
     log()
 
     def measure(inp, target, cfg, draws):

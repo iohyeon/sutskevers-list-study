@@ -27,7 +27,7 @@ LSTM을 키웠을 때 과적합을 막는 방법과, 정렬 라벨 없이 음성
 | `dropout_placement.py` | dropout을 어디에 걸어야 검증 perplexity가 낮은가 | [dropout-placement.txt](results/dropout-placement.txt) | 없음 2.664, 비순환만 1.850, 순환 per-step만 2.227, 양쪽 1.747 |
 | `variational_dropout.py` | 마스크를 시퀀스 안에서 고정하면 달라지는가 | [variational-dropout.txt](results/variational-dropout.txt) | 비순환만 1.850, 순환 per-step 추가 1.747, per-sequence 추가 1.731, 양쪽 per-sequence 1.708. 행 지우기 등식의 최대 절대차 0 |
 | `rate_sweep.py` | dropout 비율과 모델 크기는 어떻게 맞물리는가 | [rate-sweep.txt](results/rate-sweep.txt) | hidden 384는 0.5에서 1.850, 0.8에서 1.702. hidden 96은 0.5에서 1.709 |
-| `ctc_forward.py` | forward 점화식이 모든 정렬의 확률 합과 같은가 | [ctc-forward.txt](results/ctc-forward.txt) | 프레임 6개에서 DP와 완전 탐색(경로 4,096개 중 84개)이 정확히 일치. torch ctc_loss와 차이 0, 수치 미분 상대 오차 최대 4.5e-08 |
+| `ctc_forward.py` | forward 점화식이 모든 정렬의 확률 합과 같은가 | [ctc-forward.txt](results/ctc-forward.txt) | 프레임 6개에서 DP와 완전 탐색(경로 4,096개 중 84개)이 정확히 일치. torch ctc_loss와 차이 0, 수치 미분 상대 오차 최대 3.950e-07 |
 | `ctc_decode.py` | beam search와 언어 모델은 무엇을 바꾸는가 | [ctc-decode.txt](results/ctc-decode.txt) | greedy CER 46.31%, beam 8과 언어 모델 결합 0.54%, beam 16 이상 0.36%. 언어 모델 없이 beam만 키우면 28% 아래로 내려가지 않음 |
 | `ctc_stride.py` | stride로 스텝을 줄이면 무엇이 표현 불가능해지는가 | [ctc-stride.txt](results/ctc-stride.txt) | 문자 단위는 stride 6에서 333/400, stride 8에서 144/400. bigram 단위는 stride 8에서 400/400. 같은 표현 범위에서 계산량 1.97배 차이 |
 | `sys_batchnorm.py` | 배치 정규화의 통계 범위가 학습을 바꾸는가 | [sequence-wise-batchnorm.txt](results/sequence-wise-batchnorm.txt) | frame error가 정규화 없음 0.2462, 시점별 0.7749, sequence-wise 0.2411, layer norm 0.2378. 시점별은 뒤쪽 시점의 표본이 1.76개까지 줄어듦 |
@@ -46,7 +46,7 @@ python3 -m venv .venv
 .venv/bin/pip install numpy torch
 
 .venv/bin/python make_corpus.py       # corpus.txt 생성 (23,546글자)
-.venv/bin/python param_count.py       # 아래 네 개는 학습을 포함합니다
+.venv/bin/python param_count.py       # 아래 다섯 개는 학습을 포함합니다
 .venv/bin/python overfit.py
 .venv/bin/python dropout_placement.py
 .venv/bin/python variational_dropout.py
@@ -60,7 +60,7 @@ python3 -m venv .venv
 .venv/bin/python sys_scaling.py
 ```
 
-학습이 들어간 스크립트가 가장 오래 걸립니다(`rate_sweep.py` 556초, `variational_dropout.py` 452초, `dropout_placement.py` 384초). 나머지는 2분 안쪽입니다. 실행한 환경과 출력은 [results/README.md](results/README.md)에 있습니다.
+학습이 들어간 스크립트가 가장 오래 걸립니다(`rate_sweep.py` 556초, `variational_dropout.py` 452초, `dropout_placement.py` 384초, `overfit.py` 215초, `mask_decay.py` 103초). 나머지는 1분 안쪽입니다. `ctc_*.py` 와 `sys_*.py` 는 결과를 화면에 출력하므로, 결과 파일을 다시 만들려면 출력을 `results/` 로 넘깁니다. 실행한 환경과 출력은 [results/README.md](results/README.md)에 있습니다.
 
 ## 참고 자료
 

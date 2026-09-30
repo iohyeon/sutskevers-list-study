@@ -1,6 +1,6 @@
 # Sutskever's List Study
 
-AlexNet, ResNet, RNN, LSTM을 원 논문의 수식, 숫자를 넣은 손계산, NumPy 구현, PyTorch 실험으로 다시 확인한 기술 노트입니다.
+AlexNet, ResNet, RNN과 LSTM, dropout 정규화와 CTC 음성 인식을 원 논문의 수식, 숫자를 넣은 손계산, NumPy 구현, PyTorch 실험으로 다시 확인한 기술 노트입니다.
 
 논문을 요약하기보다 아래 질문을 직접 확인하는 데 초점을 둡니다.
 
