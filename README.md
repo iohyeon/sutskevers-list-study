@@ -119,4 +119,6 @@ Richard Heimann의 [『Sutskever's List: Foundational Ideas of Modern AI』](htt
 
 계산이나 구현에서 오류를 발견하면 Issue로 알려 주세요.
 
+코드(`.py`)는 [MIT License](LICENSE), 문서(`.md`)와 그림(`.svg`)은 [CC BY 4.0](LICENSE-docs)입니다. 출처를 표시하면 수정과 상업적 이용을 포함해 자유롭게 쓸 수 있습니다.
+
 관련 글: https://develop-tracking.tistory.com/
